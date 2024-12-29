@@ -1,0 +1,42 @@
+cd /var/www
+composer create-project --prefer-dist laravel/laravel .
+docker exec -it laravel_app sh
+npm install
+npm run dev
+
+docker-compose up -d --build 
+make build
+
+docker system prune -a
+
+#RUN chmod 777 -R /var/www/
+
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=root
+
+CACHE_DRIVER=redis
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_ENCRYPTION=null
+
+
+root 
+root
+
+ volumes:
+#   mysql-data:
+#     driver: local
+#   redis-data:
+#     driver: local
